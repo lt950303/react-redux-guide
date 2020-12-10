@@ -1,7 +1,5 @@
-import { HIDEMODAL, SHOWMODAL, SHOW_MODAL_ASYNC } from "../const/modal.const"
+import { createAction } from 'redux-actions'
 
-export const show = () => ({type: SHOWMODAL})
-export const hide = () => ({type: HIDEMODAL})
-
-
-export const show_modal_aysnc = () => ({type: SHOW_MODAL_ASYNC})
+export const show = createAction('show')
+export const hide = createAction('hide')
+export const show_modal_aysnc = createAction('show_modal_aysnc')

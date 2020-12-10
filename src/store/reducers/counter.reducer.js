@@ -1,27 +1,17 @@
-import { DECREMENT, INCREMENT } from "../const/counter.const";
+import { handleActions as createReducer } from 'redux-actions'
+import { decrement, increment, increment_async } from '../actions/counter.action'
 
 
 // 默认 state
-let initalSate = {
+let initialSate = {
   count: 0
 }
-// 2.创建reducer
-export default (state = initalSate, action) => {
-  switch (action.type) {
-    case INCREMENT:
-      return { 
-        ...state,
-        count: state.count + action.payload
-      }
-      break;
-    case DECREMENT:
-      return { 
-        ...state,
-        count: state.count - action.payload
-      }
-      break;
-    default:
-      return state
-      break;
-  }
-}
+
+const handleIncrement = (state, action) => ({count: state.count + action.payload})
+const handleDecrement = (state, action) => ({count: state.count - action.payload})
+
+export default createReducer({
+  [increment]: handleIncrement,
+  [decrement]: handleDecrement,
+  // [increment_async]: handleIncrementAsync
+}, initialSate)
